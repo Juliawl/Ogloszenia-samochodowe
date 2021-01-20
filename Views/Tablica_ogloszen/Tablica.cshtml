@@ -1,0 +1,58 @@
+﻿@model IEnumerable<SerwisSamochodowy.Models.Tablica_ogloszen>
+@{
+    ViewBag.Title = "Tablica ogłoszeń";
+}
+
+<h1 style="text-align: center">Tablica ogłoszeń</h1><br />
+
+<div class="container">
+    @foreach(var ogloszenie in Model)
+    {
+        <div class="col-md-6" style="border: 1px solid black">
+            <div style="text-align: center; border-bottom: 1px solid black">
+                <h4>@ogloszenie.Marka @ogloszenie.Model</h4>
+            </div>
+            <div>
+                <br />
+                <div class="col-md-12">
+                    <img class="img-responsive" src="@Url.Content(@ogloszenie.Zdjecie)" />
+                </div>
+                <div class="col-md-6" style="text-align:left">
+                    <p><b>Kategoria:</b><br />@ogloszenie.Kategoria_samochodu</p>
+                </div>
+                <div class="col-md-6" style="text-align:left">
+                    <p><b>Marka:</b><br />@ogloszenie.Marka</p>
+                </div>
+                <div class="col-md-6" style="text-align:left">
+                    <p><b>Model:</b><br />@ogloszenie.Model</p>
+                </div>
+                <div class="col-md-6" style="text-align:left">
+                    <p><b>Kolor:</b><br />@ogloszenie.Kolor</p>
+                </div>
+                <div class="col-md-6" style="text-align:left">
+                    <p><b>Rok produkcji:</b><br />@ogloszenie.Rok_produkcji</p>
+                </div>
+                <div class="col-md-6" style="text-align:left">
+                    <p><b>Przebieg:</b><br />@ogloszenie.Przebieg km</p>
+                </div>
+                <div class="col-md-6" style="text-align:left">
+                    <p><b>Rodzaj paliwa:</b><br />@ogloszenie.Rodzaj_paliwa</p>
+                </div>
+                <div class="col-md-6" style="text-align:left">
+                    <p><b>Numer VIN:</b><br />@ogloszenie.Nr_vin</p>
+                </div>
+                <div class="col-md-6" style="text-align:left">
+                    <p><b>Numer kontaktowy:</b><br />@ogloszenie.Nr_kontaktowy</p>
+                </div>
+                <div class="col-md-6" style="text-align:left">
+                    <p><b>Cena:</b><br />@ogloszenie.Cena PLN</p>
+                </div>
+                <div class="col-md-6" style="text-align:left">
+                    <p><b>Opis:</b><br />@ogloszenie.Opis</p>
+                </div>
+
+            </div>
+
+        </div>
+    }
+</div>

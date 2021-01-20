@@ -1,0 +1,72 @@
+﻿@model SerwisSamochodowy.Models.Logowanie_konta
+@{
+    ViewBag.Title = "Logowanie";
+}
+
+<fieldset>
+    <legend>
+       <h2>Logowanie</h2>
+    </legend>
+    @using (Html.BeginForm("Logowanie", "Konto", FormMethod.Post))
+    {
+        <table>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Login)
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.Login, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(model => model.Login, null, new { @class = "text text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Haslo)
+                </td>
+                <td>
+                    @Html.PasswordFor(model => model.Haslo, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(model => model.Haslo, null, new { @class = "text text-danger" })
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="submit" value="Zaloguj" class="btn btn-default" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+
+                </td>
+                <td>
+                    @Html.ValidationMessage("Error", null, new { @class = "text text-danger" })
+                </td>
+            </tr>
+
+        </table>
+    }
+</fieldset>
+

@@ -1,0 +1,145 @@
+﻿@model SerwisSamochodowy.Models.Konto
+@{
+    ViewBag.Title = "Rejestracja";
+}
+
+<fieldset>
+    <legend>
+        <h2>Rejestracja</h2>
+    </legend>
+    @using(Html.BeginForm("Rejestracja", "Konto", FormMethod.Post))
+    {
+        <table>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Imie)
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.Imie, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(model => model.Imie, null, new { @class = "text text-danger"})
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Nazwisko)
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.Nazwisko, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(model => model.Nazwisko, null, new { @class = "text text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Miasto)
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.Miasto, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(model => model.Miasto, null, new { @class = "text text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.E_mail)
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.E_mail, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(model => model.E_mail, null, new { @class = "text text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Nr_telefonu)
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.Nr_telefonu, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(model => model.Nr_telefonu, null, new { @class = "text text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Login)
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.Login, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(model => model.Login, null, new { @class = "text text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Haslo)
+                </td>
+                <td>
+                    @Html.PasswordFor(model => model.Haslo, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(model => model.Haslo, null, new { @class = "text text-danger" })
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="submit" value="Zarejestruj się" class="btn btn-default" />
+                            </td>
+                            <td>
+                                <input type="reset" value="Zresetuj dane" class="btn btn-default" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    @Html.ValidationMessage("Error", null, new { @class = "text text-danger" })
+                </td>
+            </tr>
+        </table>
+    }
+</fieldset>

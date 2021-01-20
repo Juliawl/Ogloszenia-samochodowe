@@ -1,0 +1,157 @@
+﻿@model SerwisSamochodowy.Models.Samochod
+@{
+    ViewBag.Title = "Dodaj ogłoszenie";
+}
+
+
+
+    <legend>
+        <h2>Dodaj ogłoszenie</h2>
+    </legend>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#dodaj").click(function () {
+                dodaj_samochod();
+            });
+        });
+
+        $(document).ready(function () {
+            $("#zresetuj").click(function () {
+                zresetuj_samochod();
+            });
+        });
+
+        function zresetuj_samochod() {
+            $("#Kategoria_ID").val("1");
+            $("#Marka").val("");
+            $("#Model").val("");
+            $("#Kolor").val("");
+            $("#Rok_produkcji").val("");
+            $("#Przebieg").val("");
+            $("#Rodzaj_paliwa").val("");
+            $("#Nr_vin").val("");
+            $("#Opis").val("");
+            $("#Nr_kontaktowy").val("");
+            $("#Cena").val("");
+            $("#Zdjecie").val("");
+        }
+
+        function dodaj_samochod() {
+            var formData = new FormData();
+            formData.append("Kategoria_ID", $("#Kategoria_ID").val());
+            formData.append("Marka", $("#Marka").val());
+            formData.append("Model", $("#Model").val());
+            formData.append("Kolor", $("#Kolor").val());
+            formData.append("Rok_produkcji", $("#Rok_produkcji").val());
+            formData.append("Przebieg", $("#Przebieg").val());
+            formData.append("Rodzaj_paliwa", $("#Rodzaj_paliwa").val());
+            formData.append("Nr_vin", $("#Nr_vin").val());
+            formData.append("Opis", $("#Opis").val());
+            formData.append("Nr_kontaktowy", $("#Nr_kontaktowy").val());
+            formData.append("Cena", $("#Cena").val());
+            formData.append("Zdjecie", $("#Zdjecie").get(0).files[0]);
+
+            $.ajax({
+                async: true,
+                dataType: 'JSON',
+                type: 'POST',
+                contentType: false,
+                processData: false,
+                url: '/Samochod/Dodaj_ogloszenie',
+                data: formData,
+                success: function (data) {
+                    if (data.Success) {
+                        alert(data.Message);
+                        zresetuj_samochod();
+                    }
+
+                },
+                error: function () {
+                    alert("Wystapił błąd podczas dodawania ogłoszenia");
+                }
+            });
+        }
+
+    </script>
+
+    <div class="container">
+        <div class="col-md-4">
+            <div class="form-group">
+                Kategoria
+                @Html.DropDownListFor(model => model.Kategoria_ID, new SelectList(Model.Kategoria_wybor, "Value", "Text"), new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                Marka
+                @Html.TextBoxFor(model => model.Marka, new { @class = "form-control", autocomplete = "Off" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                Model
+                @Html.TextBoxFor(model => model.Model, new { @class = "form-control", autocomplete = "Off" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                Kolor
+                @Html.TextBoxFor(model => model.Kolor, new { @class = "form-control", autocomplete = "Off" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                Rok produkcji
+                @Html.TextBoxFor(model => model.Rok_produkcji, new { @class = "form-control", autocomplete = "Off" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                Przebieg
+                @Html.TextBoxFor(model => model.Przebieg, new { @class = "form-control", autocomplete = "Off" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                Rodzaj paliwa
+                @Html.TextBoxFor(model => model.Rodzaj_paliwa, new { @class = "form-control", autocomplete = "Off" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                Numer VIN
+                @Html.TextBoxFor(model => model.Nr_vin, new { @class = "form-control", autocomplete = "Off" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                Opis
+                @Html.TextBoxFor(model => model.Opis, new { @class = "form-control", autocomplete = "Off" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                Numer kontaktowy
+                @Html.TextBoxFor(model => model.Nr_kontaktowy, new { @class = "form-control", autocomplete = "Off" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                Cena
+                @Html.TextBoxFor(model => model.Cena, new { @class = "form-control", autocomplete = "Off" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                Zdjęcie
+                @Html.TextBoxFor(model => model.Zdjecie, new { type = "file", @class = "form-control" })
+            </div>
+        </div>
+
+        <div>
+            <input type="button" value="Dodaj" class="btn btn-default" id="dodaj" />
+            <input type="button" value="Zresetuj" class="btn btn-default" id="zresetuj" />
+        </div>
+    </div>
+

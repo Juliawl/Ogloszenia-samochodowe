@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Baza_samochodowModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Kategorie">
+          <Key>
+            <PropertyRef Name="Kategoria_ID" />
+          </Key>
+          <Property Name="Kategoria_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kategoria_nazwa" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Samochody">
+          <Key>
+            <PropertyRef Name="Samochod_ID" />
+          </Key>
+          <Property Name="Samochod_ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Kategoria_ID" Type="int" Nullable="false" />
+          <Property Name="Marka" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Model" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Kolor" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Rok_produkcji" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Przebieg" Type="float" Nullable="false" />
+          <Property Name="Rodzaj_paliwa" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Nr_vin" Type="char" MaxLength="17" Nullable="false" />
+          <Property Name="Cena" Type="float" Nullable="false" />
+          <Property Name="Nr_kontaktowy" Type="char" MaxLength="9" Nullable="false" />
+          <Property Name="Opis" Type="varchar" MaxLength="350" Nullable="false" />
+          <Property Name="Zdjecie" Type="varchar" MaxLength="550" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Baza_samochodowModelStoreContainer">
+          <EntitySet Name="Kategorie" EntityType="Self.Kategorie" Schema="Ogloszenie" store:Type="Tables" />
+          <EntitySet Name="Samochody" EntityType="Self.Samochody" Schema="Ogloszenie" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Baza_samochodowModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Kategorie">
+          <Key>
+            <PropertyRef Name="Kategoria_ID" />
+          </Key>
+          <Property Name="Kategoria_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kategoria_nazwa" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Samochody">
+          <Key>
+            <PropertyRef Name="Samochod_ID" />
+          </Key>
+          <Property Name="Samochod_ID" Type="Guid" Nullable="false" />
+          <Property Name="Kategoria_ID" Type="Int32" Nullable="false" />
+          <Property Name="Marka" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Kolor" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rok_produkcji" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Przebieg" Type="Double" Nullable="false" />
+          <Property Name="Rodzaj_paliwa" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nr_vin" Type="String" MaxLength="17" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Cena" Type="Double" Nullable="false" />
+          <Property Name="Nr_kontaktowy" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Opis" Type="String" MaxLength="350" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Zdjecie" Type="String" MaxLength="550" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Baza_samochodowEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Kategories" EntityType="Self.Kategorie" />
+          <EntitySet Name="Samochodies" EntityType="Self.Samochody" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Baza_samochodowModelStoreContainer" CdmEntityContainer="Baza_samochodowEntities">
+          <EntitySetMapping Name="Kategories">
+            <EntityTypeMapping TypeName="Baza_samochodowModel.Kategorie">
+              <MappingFragment StoreEntitySet="Kategorie">
+                <ScalarProperty Name="Kategoria_ID" ColumnName="Kategoria_ID" />
+                <ScalarProperty Name="Kategoria_nazwa" ColumnName="Kategoria_nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Samochodies">
+            <EntityTypeMapping TypeName="Baza_samochodowModel.Samochody">
+              <MappingFragment StoreEntitySet="Samochody">
+                <ScalarProperty Name="Samochod_ID" ColumnName="Samochod_ID" />
+                <ScalarProperty Name="Kategoria_ID" ColumnName="Kategoria_ID" />
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Kolor" ColumnName="Kolor" />
+                <ScalarProperty Name="Rok_produkcji" ColumnName="Rok_produkcji" />
+                <ScalarProperty Name="Przebieg" ColumnName="Przebieg" />
+                <ScalarProperty Name="Rodzaj_paliwa" ColumnName="Rodzaj_paliwa" />
+                <ScalarProperty Name="Nr_vin" ColumnName="Nr_vin" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
+                <ScalarProperty Name="Nr_kontaktowy" ColumnName="Nr_kontaktowy" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="Zdjecie" ColumnName="Zdjecie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
